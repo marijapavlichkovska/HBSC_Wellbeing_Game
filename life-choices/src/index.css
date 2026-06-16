@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Clean Hover and Focus Fixes for Choice Buttons */
+.choice-button:hover {
+  border-color: #1D9E75 !important;
+  background-color: #E1F5EE !important;
+  transform: translateX(3px);
+}
+
+.choice-button:hover .choice-letter {
+  background-color: #1D9E75 !important;
+  border-color: #1D9E75 !important;
+  color: #FFF !important;
+}
+
+/* This kills the sticky border after clicking */
+.choice-button:focus,
+.choice-button:focus-visible {
+  outline: none;
+  border-color: #DDD; /* Resets back to default normal border */
+  background-color: #FFF;
+}
