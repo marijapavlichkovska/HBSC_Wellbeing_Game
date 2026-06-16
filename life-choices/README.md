@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Life Choices - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ова е фронтенд апликацијата за проектот **Life Choices**, изградена со React. Апликацијата е интерактивна игра базирана на сценарија во која корисникот донесува секојдневни животни одлуки и ги следи нивните последици врз благосостојбата.
 
-## Available Scripts
+## Технологии
 
-In the project directory, you can run:
+* **React 19** (UI рамка со функционални компоненти и hooks)
+* **React Scripts** (алатки за развој и production build)
+* **CSS-in-JS / Inline Styles** (стилизирање преку централен `styles.js` модул)
+* **Fetch API** (комуникација со бекенд API-то)
+* **Web Vitals** (мерење на перформансите на апликацијата)
 
-### `npm start`
+## Структура на проектот
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+life-choices/
+├── public/
+│   ├── index.html          # HTML шаблон
+│   └── favicon.ico         # Икона на апликацијата
+├── src/
+│   ├── App.js              # Главна компонента — логика и сценарија
+│   ├── styles.js           # Централизирани инлајн стилови
+│   ├── index.js            # Влезна точка на React апликацијата
+│   └── index.css           # Глобални CSS стилови
+└── package.json
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Функционалност
 
-### `npm test`
+Апликацијата содржи **12 сценарија** базирани на реални предизвици со кои се соочуваат македонски тинејџери, инспирирани од HBSC студијата (2026). Секое сценарио покрива различна тема:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Тема | Опис |
+|------|------|
+| 🌙 Sleep & Screens | Управување со времето пред спиење |
+| 📚 School Stress | Справување со академски притисок |
+| 💬 Cyberbullying | Реагирање на онлајн малтретирање |
+| 👥 Peer Pressure | Одолевање на притисок од врсници |
+| 🏃 Physical Activity | Избор на активности во слободно време |
+| 💭 Loneliness | Справување со чувство на осаменост |
+| 🍔 Eating Habits | Навики во исхраната |
+| 🚬 Substance Pressure | Одбивање на цигари/алкохол |
+| 😤 Family Conflict | Управување со семеен конфликт |
+| 🎮 Screen Time | Управување со гејминг навики |
+| 🧠 Mental Health | Барање поддршка за ментално здравје |
+| 🌍 Social Causes | Помош кон исклучени врсници |
 
-### `npm run build`
+## Екрани (Screens)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Апликацијата е организирана во четири главни екрани:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Intro Screen** — Воведен екран со опис на играта
+2. **Game Screen** — Прикажува сценарио со три понудени избори и живи статистики
+3. **Feedback Screen** — Ги прикажува последиците од изборот заедно со HBSC факт
+4. **End Screen** — Финални статистики и AI резиме за благосостојбата
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Статистики
 
-### `npm run eject`
+Секој избор влијае врз четири статистики (почетна вредност: 70):
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* 🌙 **Sleep** — Квалитет на сон
+* 💜 **Mood** — Расположение
+* 👥 **Social** — Социјална поврзаност
+* 🧠 **Focus** — Концентрација
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Вредностите се заштитени со `clamp` функција (минимум: 5, максимум: 100).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Интеграција со бекендот
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+На крајот на играта, фронтендот праќа барање до бекенд серверот за генерирање на AI резиме:
 
-## Learn More
+* **URL:** `http://localhost:3001/api/summary`
+* **Метод:** `POST`
+* **Тело:** финалните статистики и историјата на изборите
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Доколку бекендот не е достапен, апликацијата прикажува резервна (fallback) порака.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Локално стартување
 
-### Code Splitting
+Со цел успешно да ја стартувате апликацијата, следете ги следниве чекори на вашиот локален компјутер.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Инсталација на зависности (Dependencies)
 
-### Analyzing the Bundle Size
+Инсталирајте ги потребните пакети преку npm:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+npm install
+```
 
-### Making a Progressive Web App
+### 2. Покренување на апликацијата
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+За да ја стартувате апликацијата во development режим извршете ја командата:
 
-### Advanced Configuration
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Апликацијата ќе започне да работи на **http://localhost:3000**.
 
-### Deployment
+> ⚠️ За целосна функционалност (AI резиме на крајот), потребно е и бекенд серверот да работи на **http://localhost:3001**. Видете ги инструкциите во README.md на бекендот.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 3. Production Build
 
-### `npm run build` fails to minify
+За да креирате оптимизирана верзија за продукција:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm run build
+```
