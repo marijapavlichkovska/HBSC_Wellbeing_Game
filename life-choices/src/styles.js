@@ -1,4 +1,3 @@
-// src/styles.js
 export const styles = {
     // Shared
     btnPrimary: {
@@ -14,15 +13,15 @@ export const styles = {
         letterSpacing: "0.02em",
     },
 
-    // Intro
+    // Intro / Language screen
     introWrap: {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
+        height: "100%",
         padding: "2rem",
-        gap: "1.75rem", // Increased slightly to give the elements breathing room
+        gap: "1.75rem",
         textAlign: "center",
         fontFamily: "'DM Sans', sans-serif",
         background: "#FAFAFA",
@@ -38,12 +37,12 @@ export const styles = {
     },
     introTitle: {
         fontFamily: "'Syne', sans-serif",
-        fontSize: 48,          // Bumped up slightly for impact
+        fontSize: 48,
         fontWeight: 800,
-        lineHeight: 1.2,       // Increased from 1.08 to prevent letters from colliding
-        letterSpacing: "-0.01em", // Slightly tighter tracking makes Syne look ultra-premium
+        lineHeight: 1.2,
+        letterSpacing: "-0.01em",
         color: "#111",
-        maxWidth: 640,         // Widened from 480 so "your wellbeing" rests beautifully on its own line
+        maxWidth: 640,
         margin: "0 auto",
     },
     introSub: {
@@ -66,7 +65,7 @@ export const styles = {
     gameWrap: {
         display: "flex",
         flexDirection: "column",
-        minHeight: "100vh",
+        minHeight: "100%",
         fontFamily: "'DM Sans', sans-serif",
         background: "#FAFAFA",
     },
@@ -167,11 +166,6 @@ export const styles = {
         width: "100%",
         transition: "all 0.18s",
     },
-    // choiceBtnHover: {
-    //     borderColor: "#1D9E75",
-    //     background: "#E1F5EE",
-    //     transform: "translateX(3px)",
-    // },
     choiceLetter: {
         fontFamily: "'Syne', sans-serif",
         fontSize: 12,
@@ -186,7 +180,6 @@ export const styles = {
         color: "#888",
         transition: "all 0.18s",
     },
-    // choiceLetterHover: { background: "#1D9E75", borderColor: "#1D9E75", color: "#FFF" },
     choiceText: { fontSize: 14, lineHeight: 1.5, color: "#222" },
 
     // Feedback
@@ -195,7 +188,7 @@ export const styles = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh",
+        height: "100%",
         padding: "2rem 1.5rem",
         gap: "1.25rem",
         textAlign: "center",
@@ -251,11 +244,11 @@ export const styles = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "2rem 1.5rem",
+        padding: "2.5rem 1.5rem 3rem",
         gap: "1.5rem",
         fontFamily: "'DM Sans', sans-serif",
         background: "#FAFAFA",
-        minHeight: "100vh",
+        minHeight: "100%",
     },
     endHeader: { textAlign: "center" },
     endTitle: {
