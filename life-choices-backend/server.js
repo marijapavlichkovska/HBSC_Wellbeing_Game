@@ -14,11 +14,13 @@ app.use(express.json());
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ── Health check ──────────────────────────────────────────────────────────────
+
 app.get("/", (req, res) => {
     res.json({ status: "Life Choices API is running ✅" });
 });
 
 // ── AI Wellbeing Summary ──────────────────────────────────────────────────────
+
 app.post("/api/summary", async (req, res) => {
     const { stats, choiceHistory, language } = req.body;
 
