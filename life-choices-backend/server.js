@@ -20,16 +20,23 @@ app.get("/", (req, res) => {
 
 // ── AI Wellbeing Summary ──────────────────────────────────────────────────────
 app.post("/api/summary", async (req, res) => {
-    const { stats, choiceHistory } = req.body;
+    const { stats, choiceHistory, language } = req.body;
 
     if (!stats || !choiceHistory) {
         return res.status(400).json({ error: "Missing stats or choiceHistory" });
     }
 
+    const lang = language === "mk" ? "mk" : "en";
+
     const goodCount = choiceHistory.filter((c) => c.good).length;
     const total = choiceHistory.length;
     const struggles = choiceHistory.filter((c) => !c.good).map((c) => c.scenario);
     const strengths = choiceHistory.filter((c) => c.good).map((c) => c.scenario);
+
+    const languageInstruction =
+        lang === "mk"
+            ? "IMPORTANT: Write your entire response in Macedonian (македонски јазик). Do not use any English."
+            : "Write your response in English.";
 
     const prompt = `You are a compassionate wellbeing coach for teenagers. A player just completed a 12-scenario interactive story game about Alex, a 15-year-old Macedonian teen navigating real-life challenges.
 
@@ -43,7 +50,9 @@ Good choices made: ${goodCount} out of ${total}.
 Topics where Alex made healthy choices: ${strengths.join(", ") || "none"}.
 Topics where Alex's choices were harmful: ${struggles.join(", ") || "none"}.
 
-Write a warm, personal 4–5 sentence wellbeing summary. Mention specific strengths and 1–2 areas to work on. Reference real HBSC statistics about Macedonian teens where relevant. End with an encouraging sentence. Be conversational, not clinical. No bullet points. No greeting. No sign-off.`;
+Write a warm, personal 4–5 sentence wellbeing summary. Mention specific strengths and 1–2 areas to work on. Reference real HBSC statistics about Macedonian teens where relevant. End with an encouraging sentence. Be conversational, not clinical. No bullet points. No greeting. No sign-off.
+
+${languageInstruction}`;
 
     try {
         const completion = await groq.chat.completions.create({
