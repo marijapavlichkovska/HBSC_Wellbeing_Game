@@ -787,6 +787,15 @@ const SCENARIOS = {
       const [pendingChoice, setPendingChoice] = useState(null);
       const [choiceHistory, setChoiceHistory] = useState([]);
 
+      useEffect(() => {
+        const noScroll = ["language", "intro", "feedback"];
+        document.body.style.overflow = noScroll.includes(screen) ? "hidden" : "auto";
+
+        return () => {
+          document.body.style.overflow = "auto";
+        };
+      }, [screen]);
+
       function selectLanguage(selectedLang) {
         setLang(selectedLang);
         setScreen("intro");
