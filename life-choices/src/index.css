@@ -1,3 +1,13 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+#root {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,7 +22,6 @@ code {
     monospace;
 }
 
-/* Clean Hover and Focus Fixes for Choice Buttons */
 .choice-button:hover {
   border-color: #1D9E75 !important;
   background-color: #E1F5EE !important;
@@ -25,10 +34,9 @@ code {
   color: #FFF !important;
 }
 
-/* This kills the sticky border after clicking */
 .choice-button:focus,
 .choice-button:focus-visible {
   outline: none;
-  border-color: #DDD; /* Resets back to default normal border */
+  border-color: #DDD;
   background-color: #FFF;
 }
